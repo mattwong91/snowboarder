@@ -20,10 +20,10 @@ public class CrashDetector : MonoBehaviour
   {
     if (other.otherCollider == headCollider)
     {
+      FindObjectOfType<PlayerController>().DisableControls();
       crashEffect.Play();
       GetComponent<AudioSource>().PlayOneShot(crashSFX);
       other.gameObject.GetComponent<SurfaceEffector2D>().enabled = false;
-      GetComponent<PlayerController>().enabled = false;
 
       Invoke("ReloadScene", loadDelay);
     }
