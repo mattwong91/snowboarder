@@ -7,6 +7,7 @@ public class CrashDetector : MonoBehaviour
 {
   [SerializeField] float loadDelay = 1f;
   [SerializeField] ParticleSystem crashEffect;
+  [SerializeField] AudioClip crashSFX;
 
   CircleCollider2D headCollider;
 
@@ -20,6 +21,7 @@ public class CrashDetector : MonoBehaviour
     if (other.otherCollider == headCollider)
     {
       crashEffect.Play();
+      GetComponent<AudioSource>().PlayOneShot(crashSFX);
       other.gameObject.GetComponent<SurfaceEffector2D>().enabled = false;
       GetComponent<PlayerController>().enabled = false;
 
