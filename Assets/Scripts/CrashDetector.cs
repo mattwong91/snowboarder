@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class CrashDetector : MonoBehaviour
 {
   [SerializeField] float loadDelay = 1f;
+  [SerializeField] ParticleSystem crashEffect;
 
   CircleCollider2D headCollider;
 
@@ -18,7 +19,7 @@ public class CrashDetector : MonoBehaviour
   {
     if (other.otherCollider == headCollider)
     {
-      Debug.Log("Bonked your head");
+      crashEffect.Play();
       other.gameObject.GetComponent<SurfaceEffector2D>().enabled = false;
       GetComponent<PlayerController>().enabled = false;
 
